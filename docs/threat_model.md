@@ -98,3 +98,24 @@ Fields explained:
 
 ---
 Generated from plan: /home/kihi2024/.copilot/session-state/aa93c3f0-23c1-4612-bdab-1d3b0178d990/plan.md
+
+## Work completed for Issue #2
+Files added/updated for Issue #2 (policy & threat model):
+
+- docs/threat_model.md — this file (expanded with this summary).
+- docs/policy_schema.json — JSON Schema used to validate policy documents.
+- docs/policies/examples.yaml — example policy templates (read-logs, deploy-run, read-config).
+
+These files were created to provide:
+- A clear threat model and attack-surface analysis.
+- A machine-validated policy schema to enable safe policy authoring.
+- Example policies demonstrating typical agent tasks and approval requirements.
+
+Repository links:
+- Threat model: https://github.com/${REPO}/blob/main/docs/threat_model.md
+- Policy schema: https://github.com/${REPO}/blob/main/docs/policy_schema.json
+- Example policies: https://github.com/${REPO}/blob/main/docs/policies/examples.yaml
+
+Commit history (recent commits affecting these files):
+- 9abfb9f docs: add policy schema and example policies\n\nAdd JSON Schema for policy validation and example YAML policies for common tasks.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com> (kihi2024)
+- 7d4d7cf docs: threat model & policy schema for Agent SSH System\n\nAdds initial threat model, policy schema, approval and revoke designs.\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com> (kihi2024)
