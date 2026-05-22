@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "kiki_ssh Policy Schema",
+  "type": "object",
+  "required": ["id", "description", "principals", "hosts", "commands"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-zA-Z0-9_\-]+$" },
+    "description": { "type": "string" },
+    "principals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "agent_groups": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "hosts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "host_tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "commands": {
+      "type": "object",
+      "properties": {
+        "allow": { "type": "array", "items": { "type": "string" } },
+        "deny": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "paths": {
+      "type": "object",
+      "properties": {
+        "allow": { "type": "array", "items": { "type": "string" } },
+        "deny": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "max_duration": { "type": "string", "pattern": "^\\d+[smhd]$" },
+    "require_approval": { "type": "boolean", "default": false },
+    "dry_run": { "type": "boolean", "default": false },
+    "risk_level": { "type": "string", "enum": ["low", "medium", "high"], "default": "low" },
+    "approvals_required": { "type": "integer", "minimum": 0, "default": 0 },
+    "created_by": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,54 @@
+# Example policies for kiki_ssh
+
+- id: read-logs
+  description: Allow agent to read application logs for debugging
+  principals:
+    - ci-bot-123
+  hosts:
+    - prod-app-01.example.net
+  commands:
+    allow:
+      - "journalctl -u myapp --no-pager"
+      - "cat /var/log/myapp/*.log"
+  paths:
+    allow:
+      - "/var/log/myapp/*"
+  max_duration: 30m
+  require_approval: false
+  dry_run: false
+  risk_level: low
+
+- id: deploy-run
+  description: Allow deployment script execution for release pipeline (requires approval)
+  principals:
+    - deploy-agent
+  hosts:
+    - web-*-prod.example.net
+  commands:
+    allow:
+      - "/usr/local/bin/deploy_myapp.sh"
+    deny:
+      - "rm -rf /"
+  paths:
+    allow:
+      - "/etc/myapp/*"
+  max_duration: 15m
+  require_approval: true
+  approvals_required: 1
+  risk_level: high
+
+- id: read-config
+  description: Allow reading limited config for troubleshooting
+  principals:
+    - support-agent
+  hosts:
+    - prod-app-01.example.net
+  commands:
+    allow:
+      - "cat /etc/myapp/config.yaml"
+  paths:
+    allow:
+      - "/etc/myapp/config.yaml"
+  max_duration: 10m
+  require_approval: false
+  risk_level: medium
