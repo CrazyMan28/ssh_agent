@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+**/*.log
+/node_modules
+/dist
+.env

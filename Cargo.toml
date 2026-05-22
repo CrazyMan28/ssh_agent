@@ -1,0 +1,2 @@
+[workspace]
+members = ["gateway", "host-wrapper", "policy", "agent-sdk"]
